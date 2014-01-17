@@ -6,12 +6,12 @@
     <link rel="stylesheet" href="./css/bootstrap.min.css"/>
     <link rel="stylesheet" href="./css/app.css"/>
 </head>
-<body>
+<body ng-cloak>
 <div class="container">
     <div class="navbar">
         <div class="navbar-inner">
             <ul class="nav">
-
+                <li><a href="./NewEvent.html">Create Event</a></li>
             </ul>
         </div>
     </div>
@@ -19,9 +19,11 @@
         <img ng-src="{{event.imageUrl}}" alt="{{event.name}}" />
         <div class="row">
             <div class="span11">
-                <h2>{{event.name}}</h2>
+                <h2>{{event.name | uppercase}}</h2>
             </div>
         </div>
+
+
         <div class="row">
             <div class="span3">
                 <div><strong>Date:</strong> {{event.date}}</div>
@@ -36,28 +38,42 @@
             </div>
         </div>
 
+        <div>{{3.1415926535 | number:2}}</div>
+        <div>{{ {a:3, b:'hi', c:{aa:35} } | json}}</div>
         <hr />
 
         <h3>Sessions</h3>
+        Order By:
+        <select ng-model="sortorder" class="input-small">
+            <option selected value="name">Name</option>
+            <option value="-upVoteCount">Votes</option>
+        </select>
+        Show:
+        <select ng-model="query.level" class="input-medium">
+            <option selected value="">All</option>
+            <option selected value="introductory">Introductory</option>
+            <option selected value="intermediate">Intermediate</option>
+            <option selected value="advanced">Advanced</option>
+        </select>
         <ul class="thumbnails">
-            <ul ng-repeat="session in event.sessions">
+            <ul ng-repeat="session in event.sessions" >
 
                 <div class="row session">
-                    <div class="span3 well votingWidget">
+                    <div class="span0 well votingWidget">
                         <div class="votingButton" ng-click="upVoteSession(session)">
                             <i class="icon-chevron-up icon-white"></i>
                         </div>
                         <div class="badge badge-inverse">
                             <div>{{session.upVoteCount}}</div>
                         </div>
-                        <div class="votingButton" ng-click="upVoteSession(session)">
+                        <div class="votingButton" ng-click="downVoteSession(session)">
                             <i class="icon-chevron-down"></i>
                         </div>
                     </div>
                     <div class="well span9">
                         <h4 class="well-title">{{session.name}}</h4>
                         <h6 style="margin-top:-10px">{{session.creatorName}}</h6>
-                        <span>Duration: {{session.duration}}</span><br/>
+                        <span>Duration: {{session.duration | durations}}</span><br/>
                         <span>Level: {{session.level}}</span>
 
                         <p>{{session.abstract}}</p>
@@ -72,7 +88,9 @@
 <script src="./lib/underscore-1.4.4.min.js"></script>
 <script src="./lib/bootstrap.min.js"></script>
 <script src="./lib/angular/angular.js"></script>
+<script src="./lib/angular/angular-sanitize.js"></script>
 <script src="./js/app.js"></script>
 <script src="./js/controllers/EventController.js"></script>
+<script src="./js/filters.js"></script>
 </body>
 </html>
