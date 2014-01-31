@@ -1,6 +1,6 @@
 
 eventsApp.factory('eventData', function($resource, $q) {
-    var resource = $resource('/data/event/:id.json', {id:'@id'});
+    var resource = $resource('/data/event/:id', {id:'@id'});
     return {
         getEvent: function() {
             var deferred = $q.defer();
