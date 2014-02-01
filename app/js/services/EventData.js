@@ -17,13 +17,16 @@ eventsApp.factory('eventData', function($resource, $q) {
 
         save: function(event) {
             var deferred = $q.defer();
-            event.id = 998;
+            event.id = 999;
             resource.save(event,
                 function(event){deferred.resolve(event);},
                 function (response){deferred.reject(response);}
             );
 
             return deferred.promise;
+        },
+        getAllEvents: function() {
+            return resource.query();
         }
     };
 });
