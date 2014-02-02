@@ -1,14 +1,14 @@
 /* app css stylesheet */
 .hoverwell:hover {
-    background-color: #52575c;
-    cursor: pointer;
+  background-color: #52575c;
+  cursor: pointer;
 }
 select, textarea {
-    color: #52575c;
+  color: #52575c;
 }
 
 .well-title {
-    margin-top: 0px;
+  margin-top: 0px;
 }
 .session {
     -webkit-touch-callout: none;
@@ -20,15 +20,11 @@ select, textarea {
 }
 
 .votingWidget {
-    height: 64px;
-    padding: 7px;
+  height: 64px;
+  padding: 7px;
 }
 
 .votingButton {
-    padding-left:6px;
-    cursor:pointer;
-}
-
-[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
-    display: none !important;
+  padding-left:6px;
+  cursor:pointer;
 }

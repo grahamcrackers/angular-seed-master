@@ -10,3 +10,4 @@ eventsApp.controller('EditProfileController',
 
     }
 );
+

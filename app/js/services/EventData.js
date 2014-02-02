@@ -1,28 +1,24 @@
-
-eventsApp.factory('eventData', function($resource, $q) {
-    var resource = $resource('/data/event/:id', {id:'@id'});
+eventsApp.factory('eventData', function ($resource, $q) {
+    var resource = $resource('/data/event/:id', {id: '@id'});
     return {
-        getEvent: function() {
+        getEvent: function (eventId) {
             var deferred = $q.defer();
-            resource.get({id:1},
-                function(event){
+            resource.get({id: eventId},
+                function (event) {
                     deferred.resolve(event);
                 },
-                function (response){
+                function (response) {
                     deferred.reject(response);
                 });
-
             return deferred.promise;
         },
-
         save: function(event) {
             var deferred = $q.defer();
             event.id = 999;
             resource.save(event,
-                function(event){deferred.resolve(event);},
-                function (response){deferred.reject(response);}
+                function(response) { deferred.resolve(response);},
+                function(response) { deferred.reject(response);}
             );
-
             return deferred.promise;
         },
         getAllEvents: function() {

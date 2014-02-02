@@ -1,32 +1,33 @@
-<div style="padding-left: 20px; padding-right: 20px">
-    <div class="container">
-        <h1 ng-hide="EditingEvent">New Event</h1>
-        <h1 ng-show="EditingEvent">Edit Event</h1>
-        <hr />
+<div style="padding-left:20px; padding-right:20px">
+    <div class="container" >
+        <h1 ng-hide="editingEvent">New Event</h1>
+        <h1 ng-show="editingEvent">Edit Event</h1>
+        <hr/>
         <form name="editEventForm">
             <fieldset>
                 <label for="eventName">Event Name:</label>
-                <input id="eventName" type="text" required ng-model="event.name" placeholder="Name of your event..." />
-                <label for="eventDate">Event Date:</label>
-                <input id="eventDate" type="text" required ng-pattern="/\d\d/\d\d/\d\d\d\d/" ng-model="event.date" placeholder="format (mm/dd/yyyy)..." />
-                <label for="eventTime">Event Time:</label>
-                <input id="eventTime" type="text" ng-model="event.time" placeholder="start and end time..." />
-                <label for="eventLocation">Event Location:</label>
-                <input id="eventLocation" type="text" ng-model="event.location.address" placeholder="Address of event..." />
+                <input id="eventName" type="text" required placeholder="Name of your event..." ng-model="event.name" />
+                <label for="eventDate">Date:</label>
+                <input id="eventDate" type="text" required placeholder="format (mm/dd/yyyy)..." ng-model="event.date" />
+                <label for="eventTime">Time:</label>
+                <input id="eventTime" type="text" required placeholder="start and end time..." ng-model="event.time" />
+                <label for="eventLocation">Location:</label>
+                <input id="eventLocation" type="text" required placeholder="Address of event..." ng-model="event.location.address" />
                 <br />
-                <input id="eventCity" type="text" class="input-small" ng-model="event.location.city" placeholder="City..." />
-                <input id="eventProvince" type="text" class="input-small" ng-model="event.location.province" placeholder="Province..." />
+                <input id="eventCity" type="text" required class="input-small" placeholder="City..." ng-model="event.location.city" />
+                <input id="eventProvince" type="text" required class="input-small" placeholder="Province..." ng-model="event.location.province" />
 
                 <label for="eventImageUrl">Image:</label>
-                <input id="eventImageUrl" type="url" class="input-xlarge" ng-model="event.imageUrl" placeholder="Url of image..." />
+                <input id="eventImageUrl" type="url" required class="input-xlarge" placeholder="Url of image..." ng-model="event.imageUrl" />
+
             </fieldset>
 
-            <img ng-src="{{event.imageUrl}}" src="" />
+            <img data-ng-src="{{event.imageUrl}}" src="" />
             <br />
             <br />
 
-            <button type="submit" ng-disabled="newEventForm.$invalid" ng-click="saveEvent(event, newEventForm)" class="btn btn-primary">Save</button>
-            <button type="button" ng-click="cancelEdit()" class="btn btn-default">Cancel</button>
+            <button type="submit" class="btn btn-primary" ng-click="saveEvent(event, editEventForm)">Save</button>
+            <button type="button" class="btn btn-default" ng-click="cancelEdit()">Cancel</button>
 
         </form>
     </div>
