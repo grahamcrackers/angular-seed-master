@@ -5,6 +5,7 @@ eventsApp
         return {
             restrict: 'E',
             replace: true,
+            priority: -1,
             template: "<button class='btn' ng-click='sayHello()'>Say Hello</button>",
             controller: function($scope) {
                 var greetings = ['hello'];
@@ -23,6 +24,8 @@ eventsApp
         return {
             restrict: 'A',
             require: 'greeting',
+            priority: -1,
+            terminal: true,
             link: function(scope, element, attrs, controller) {
                 controller.addGreeting('hei');
             }
@@ -32,6 +35,7 @@ eventsApp
         return {
             restrict: 'A',
             require: 'greeting',
+            priority: -2,
             link: function(scope, element, attrs, controller) {
                 controller.addGreeting('नमस्ते');
             }
