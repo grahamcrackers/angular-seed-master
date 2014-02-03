@@ -27,12 +27,10 @@ var eventsApp = angular.module('eventsApp', ['ngResource'])
             });
         $routeProvider.when('/sampleDirective',
             {
-                //template: "<input type='text' ng-model='sampleData' /> {{sampleData}}<br/>",
-
                 templateUrl: '/templates/SampleDirective.html',
                 controller: 'SampleDirectiveController'
             });
-        //$routeProvider.otherwise({redirectTo: '/events'});
+        $routeProvider.otherwise({redirectTo: '/events'});
         $locationProvider.html5Mode(true);
     });
 
